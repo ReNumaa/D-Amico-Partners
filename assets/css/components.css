@@ -1355,3 +1355,117 @@ body.is-menu-open { overflow: hidden; }
   color: var(--color-cyan-600);
   border-bottom-color: var(--color-cyan-600);
 }
+
+/* Griglia recapiti a 2 colonne (pagina Contatti): 1 → 2, senza salire a 3 */
+@media (min-width: 640px) {
+  .location-grid--2 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 960px) {
+  .location-grid--2 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============ Location hero (Dove siamo — mappa in evidenza) ============ */
+.location-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: stretch;
+}
+.location-hero__grid > * { min-width: 0; }
+
+@media (min-width: 1024px) {
+  .location-hero__grid {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-7);
+  }
+}
+
+/* Mappa: arrotondata, con ombra; sempre come primo elemento (anche su mobile) */
+.location-hero__map {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: var(--color-bg-soft);
+  aspect-ratio: 4 / 3;
+}
+@media (min-width: 1024px) {
+  .location-hero__map {
+    aspect-ratio: auto;   /* riempie l'altezza del pannello affiancato */
+    min-height: 460px;
+  }
+}
+.location-hero__map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Pannello informazioni */
+.location-hero__panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-4);
+}
+.location-hero__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  line-height: var(--lh-tight);
+  color: var(--color-ink);
+  margin: var(--space-1) 0 0;
+}
+.location-hero__lead {
+  font-size: var(--fs-md);
+  line-height: var(--lh-base);
+  color: var(--color-muted);
+  max-width: 46ch;
+  margin: 0;
+}
+
+/* Lista dettagli (indirizzo / orari) con icone */
+.location-detail {
+  list-style: none;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.location-detail__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+  color: var(--color-charcoal);
+}
+.location-detail__icon {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-md);
+  background: var(--color-cyan-100);
+  color: var(--color-cyan-600);
+}
+.location-detail__label {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 2px;
+}
+.location-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-3);
+}
