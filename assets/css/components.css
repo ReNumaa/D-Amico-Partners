@@ -1019,6 +1019,14 @@ body.is-menu-open { overflow: hidden; }
 }
 .banner__body strong { color: var(--color-cyan-600); }
 
+/* Variante "attenzione" (es. avvisi privacy): accento ambra, mai rosso allarmante */
+.banner--accent {
+  background: color-mix(in srgb, var(--color-warn) 10%, white);
+  border-left-color: var(--color-warn);
+}
+.banner--accent .banner__icon { color: var(--color-warn); }
+.banner--accent .banner__body strong { color: var(--color-warn); }
+
 /* ============ Stats section (trend 2025: big numbers as design) ============ */
 .stats {
   padding-block: var(--space-7);
